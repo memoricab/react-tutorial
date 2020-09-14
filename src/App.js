@@ -19,15 +19,31 @@ const App = props => {
         { name: 'Xavi', age: 40 }
       ]
     })
+    style.background = 'red'
 
+  }
+
+  const nameChangedHandler = (event) => {
+    setPersons({
+      persons: [
+        { name: 'Lolo', age: 32 },
+        { name: event.target.value, age: 30 },
+        { name: 'DASD', age: 40 }
+      ]
+    });
+
+  }
+
+  const style = {
+    background: 'blue'
   }
 
   return (
     <div className="App">
-      <Person name={personsState.persons[0].name} age={personsState.persons[0].age}> I'm a software engineer.</Person>
-      <Person name={personsState.persons[1].name} age={personsState.persons[1].age}></Person>
-      <Person name={personsState.persons[2].name} age={personsState.persons[2].age}></Person>
-      <button onClick={switchNameHandler}>Switch Person</button>
+      <Person name={personsState.persons[0].name} age={personsState.persons[0].age} changed= {nameChangedHandler}> I'm a software engineer.</Person>
+      <Person name={personsState.persons[1].name} age={personsState.persons[1].age} click={switchNameHandler}></Person>
+      <Person name={personsState.persons[2].name} age={personsState.persons[2].age} changed= {nameChangedHandler}></Person>
+      <button style= { style }  onClick={switchNameHandler}>Switch Person</button>
     </div>
   );
 }
